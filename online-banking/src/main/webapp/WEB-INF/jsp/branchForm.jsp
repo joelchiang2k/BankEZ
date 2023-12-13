@@ -20,7 +20,7 @@ color
 <body>
 	<div align="center">
 		<h1>Branch Form</h1>
-		<f:form action="saveBranch" method="POST" modelAttribute="branch">
+		<f:form action="saveBranch" modelAttribute="branch">
 			<table>
 			
 				<tr>
@@ -112,6 +112,8 @@ color
 					<td>${branch.getBranchAddress().getCity() }</td>
 					<td>${branch.getBranchAddress().getState() }</td>
 					<td>${branch.getBranchAddress().getCountry() }</td>
+					<td><a href="updateBranch?branchId=${branch.getBranchId()}">Update</a></td>
+					<td><a href="deleteBranch?branchId=${branch.getBranchId()}">Delete</a></td>
 				</tr>
 			</c:forEach>
 

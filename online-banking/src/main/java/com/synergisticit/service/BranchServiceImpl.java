@@ -28,6 +28,11 @@ public class BranchServiceImpl implements BranchService {
 		}
 		return null;
 	}
+	
+	@Override
+	public void deleteById(Long branchId) {
+		branchRepository.deleteById(branchId);
+	}
 
 	@Override
 	public List<Branch> findAll() {

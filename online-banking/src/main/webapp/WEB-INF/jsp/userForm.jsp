@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -41,48 +42,47 @@
 <f:form action="saveUser" modelAttribute="user">
 <table>
 <c:if test="${hasErrors}">
-<tr>
-<td>Errors:</td>
-<td><f:errors path="*" cssClass="error"/></td>
-</tr>
+	<tr>
+		<td>Errors:</td>
+		<td><f:errors path="*" cssClass="error"/></td>
+	</tr>
 </c:if>
 
-<tr>
-<td>User Id:</td>
-<td><f:input path="userId" value="${user.userId}"/></td>
+	<tr>
+		<td>User Id:</td>
+		<td><f:input path="userId" value="${user.userId}"/></td>
+	</tr>
 
-</tr>
+	<tr>
+		<td>User Name</td>
+		<td><f:input  path="username" value="${user.username}"/></td>
+	</tr>
 
-<tr>
-<td>User Name</td>
-<td><f:input  path="username" value="${user.username}"/></td>
-</tr>
-
-<tr>
-<td>Password</td>
-<td><f:password   path="password" value="${user.password}"/></td>
-</tr>
+	<tr>
+		<td>Password</td>
+		<td><f:password   path="password" value="${user.password}"/></td>
+	</tr>
 
 
-<tr>
-<td>Email</td>
-<td><f:input   path="email" value="${user.email}"/></td>
-</tr>
+	<tr>
+		<td>Email</td>
+		<td><f:input   path="email" value="${user.email}"/></td>
+	</tr>
 
-<tr>
-<td>Roles</td>
-<td>
-<c:forEach items="${roles}" var="role">
-<c:if test="${retrievedRole.contains(role) }" >
-<f:checkbox path="roles" label="${role.name}" value="${role.roleId}" checked="true"/>
-</c:if>
-
-<c:if test="${!retrievedRole.contains(role) }" >
-<f:checkbox path="roles" label="${role.name}" value="${role.roleId}" />
-</c:if>
-</c:forEach>
-</td>
-</tr>
+	<tr>
+		<td>Roles</td>
+		<td>
+			<c:forEach items="${roles}" var="role">
+				<c:if test="${retrievedRole.contains(role) }" >
+					<f:checkbox path="roles" label="${role.name}" value="${role.roleId}" checked="true"/>
+					</c:if>
+					
+					<c:if test="${!retrievedRole.contains(role) }" >
+					<f:checkbox path="roles" label="${role.name}" value="${role.roleId}" />
+				</c:if>
+			</c:forEach>
+		</td>
+	</tr>
 
 <tr>
 <td colspan="2" align="center"><input  type="submit" value="submit" class="btn btn-primary"/></td>

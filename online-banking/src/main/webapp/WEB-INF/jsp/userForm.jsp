@@ -26,6 +26,7 @@
 		<td><a href="branchForm">Branch Form</a></td><td>|</td>
 		<td><a href="roleForm">Role Form</a></td><td>|</td>
 		<td><a href="userForm">User Form</a></td><td>|</td>
+		<td><a href="customerForm">Customer Form</a></td><td>|</td>
 		<sec:authorize access="isAuthenticated()">
 		<td>|</td>
 		<td><a href="logout">Logout</a></td>

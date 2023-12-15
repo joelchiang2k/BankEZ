@@ -10,10 +10,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @NoArgsConstructor
@@ -24,13 +26,15 @@ import lombok.Setter;
 public class Branch {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@NonNull
 	private long branchId;
 	
-	@NotEmpty
+	//@NotEmpty
 	@Column(name="branchName")
 	private String branchName;
 	
 	@Embedded
+	@Valid
 	private Address branchAddress;
 	
 	@OneToMany(mappedBy="accountBranch")

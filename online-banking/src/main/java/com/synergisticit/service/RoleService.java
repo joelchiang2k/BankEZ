@@ -8,5 +8,5 @@ public interface RoleService {
       public Role save(Role role);
       public Role findById(Long roleId);
       public List<Role> findAll();
-      
+      public void deleteById(Long roleId);
 }

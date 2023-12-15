@@ -17,6 +17,20 @@ color
 )
 </style>
 </head>
+<div align="center">
+	<table>
+		<tr>
+		<td><a href="accountForm">Account Form</a></td><td>|</td>
+		<td><a href="branchForm">Branch Form</a></td><td>|</td>
+		<td><a href="roleForm">Role Form</a></td><td>|</td>
+		<td><a href="userForm">User Form</a></td><td>|</td>
+		<sec:authorize access="isAuthenticated()">
+		<td>|</td>
+		<td><a href="logout">Logout</a></td>
+		</sec:authorize>
+		</tr>
+	</table>
+</div>
 <body>
 	<div align="center">
 		<h1>Branch Form</h1>
@@ -40,6 +54,7 @@ color
 				<td>AddressLine1:</td>
 				<td>
 				<f:input path="branchAddress.addressLine1" value="${branch.getBranchAddress().getAddressLine1()}"/>
+				<td><f:errors path="branchAddress.addressLine1" cssClass="error" /></td>
 				</td>
 				</tr>
 				
@@ -47,6 +62,7 @@ color
 				<td>AddressLine2:</td>
 				<td>
 				<f:input path="branchAddress.addressLine2" value="${branch.getBranchAddress().getAddressLine2()}"/>
+				<td><f:errors path="branchAddress.addressLine2" cssClass="error" /></td>
 				</td>
 				</tr>
 				
@@ -54,6 +70,7 @@ color
 				<td>City:</td>
 				<td>
 				<f:input path="branchAddress.city"  value="${branch.getBranchAddress().getCity()}"/>
+				<td><f:errors path="branchAddress.city" cssClass="error" /></td>
 				</td>
 				</tr>
 				
@@ -61,6 +78,7 @@ color
 				<td>State:</td>
 				<td>
 				<f:input path="branchAddress.state"  value="${branch.getBranchAddress().getState()}"/>
+				<td><f:errors path="branchAddress.state" cssClass="error" /></td>
 				</td>
 				</tr>
 				
@@ -68,6 +86,7 @@ color
 				<td>Country:</td>
 				<td>
 				<f:input path="branchAddress.country"  value="${branch.getBranchAddress().getCountry()}"/>
+				<td><f:errors path="branchAddress.country" cssClass="error" /></td>
 				</td>
 				</tr>
 				
@@ -75,6 +94,7 @@ color
 				<td>Zipcode:</td>
 				<td>
 				<f:input path="branchAddress.zipcode"  value="${branch.getBranchAddress().getZipcode()}"/>
+				<td><f:errors path="branchAddress.zipcode" cssClass="error" /></td>
 				</td>
 				</tr>
 				
@@ -100,6 +120,7 @@ color
 					<td>City</td>
 					<td>State</td>
 					<td>Country</td>
+					<td>ZipCode</td>
 				</tr>
 			</thead>
 			<c:forEach items="${branches}" var="branch">
@@ -112,6 +133,7 @@ color
 					<td>${branch.getBranchAddress().getCity() }</td>
 					<td>${branch.getBranchAddress().getState() }</td>
 					<td>${branch.getBranchAddress().getCountry() }</td>
+					<td>${branch.getBranchAddress().getZipcode() }</td>
 					<td><a href="updateBranch?branchId=${branch.getBranchId()}">Update</a></td>
 					<td><a href="deleteBranch?branchId=${branch.getBranchId()}">Delete</a></td>
 				</tr>

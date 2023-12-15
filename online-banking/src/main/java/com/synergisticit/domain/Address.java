@@ -15,21 +15,21 @@ import lombok.Setter;
 
 @Embeddable
 public class Address {
-	@NotEmpty
+	//@NotEmpty
 	private String addressLine1;
 	
-	@NotEmpty
+	//@NotEmpty
 	private String addressLine2;
 	
-	@NotEmpty
+	//@NotEmpty
 	private String city;
 	
-	@NotEmpty
+	//@NotEmpty
 	private String state;
 	
-	@NotEmpty
+	//@NotEmpty
 	private String country;
 	
-	@NotEmpty
+	//@NotEmpty
 	private String zipcode;
 }

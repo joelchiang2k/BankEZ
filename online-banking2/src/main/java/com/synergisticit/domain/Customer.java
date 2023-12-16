@@ -35,8 +35,8 @@ public class Customer {
 	@NotEmpty
 	private String customerName;
 	
-	@NotEmpty
-	private String customerGender;
+//	@NotEmpty
+//	private String customerGender;
 	
 	@Enumerated
 	private Gender gender;

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -21,23 +22,40 @@
 <body>
 <div align="center">
 	<table>
-		<tr>
-		<td><a href="accountForm">Account Form</a></td><td>|</td>
-		<td><a href="branchForm">Branch Form</a></td><td>|</td>
-		<td><a href="roleForm">Role Form</a></td><td>|</td>
-		<td><a href="userForm">User Form</a></td><td>|</td>
-		<td><a href="customerForm">Customer Form</a></td><td>|</td>
-		<sec:authorize access="isAuthenticated()">
-		<td>|</td>
+	<tr>
+	<td><a href="home">Home</a></td><td>|</td>
+	<td><a href="userForm">User Form</a></td><td>|</td>
+	<td><a href="roleForm">Role Form</a></td><td>|</td>
+	<td><a href="accountForm">Account Form</a></td><td>|</td>
+	<td><a href="customerForm">Customer Form</a></td><td>|</td>
+	<td><a href="branchForm">Branch Form</a></td>
+	
+	<sec:authorize access="isAuthenticated()">
+	<td>|</td>
 		<td><a href="logout">Logout</a></td>
-		</sec:authorize>
-		</tr>
+	</sec:authorize>
+	<td></td>
+	<td></td>
+	</tr>
 	</table>
 </div>
+
+
 <div align="center">
 
 <h1>User Form</h1>
-
+<sec:authorize access="isAuthenticated()">
+		<br>Logged In User:<sec:authentication property="principal.username"/>
+		<br>Principal: <sec:authentication property="principal"/>
+		<br>Password: <sec:authentication property="principal.password"/>
+		<br>Enabled: <sec:authentication property="principal.enabled"/>
+		<br>AccountNonExpired: <sec:authentication property="principal.accountNonExpired"/>
+		<br>AccountNonLocked: <sec:authentication property="principal.accountNonLocked"/>
+		<br>credentialsNonExpired: <sec:authentication property="principal.credentialsNonExpired"/>
+		<br>Granted Authorities: <sec:authentication property="principal.authorities"/>
+		<br> loggedInUser: ${loggedInUser}
+		<br><a href="logout">Logout</a>
+</sec:authorize>
 
 
 <f:form action="saveUser" modelAttribute="user">

@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.synergisticit</groupId>
-	<artifactId>online-banking</artifactId>
+	<artifactId>online-banking2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>online-banking</name>
+	<name>online-banking2</name>
 	<description>online banking from springboot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -114,8 +114,21 @@
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
 		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-taglibs</artifactId>
+			<version>6.2.0</version>
+		</dependency>
 
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>3.1.5</version>
+		</dependency>
 
 	</dependencies>
 

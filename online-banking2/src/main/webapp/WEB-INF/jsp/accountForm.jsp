@@ -19,19 +19,24 @@ color
 </head>
 <div align="center">
 	<table>
-		<tr>
-		<td><a href="accountForm">Account Form</a></td><td>|</td>
-		<td><a href="branchForm">Branch Form</a></td><td>|</td>
-		<td><a href="roleForm">Role Form</a></td><td>|</td>
-		<td><a href="userForm">User Form</a></td><td>|</td>
-		<td><a href="customerForm">Customer Form</a></td><td>|</td>
-		<sec:authorize access="isAuthenticated()">
-		<td>|</td>
+	<tr>
+	<td><a href="home">Home</a></td><td>|</td>
+	<td><a href="userForm">User Form</a></td><td>|</td>
+	<td><a href="roleForm">Role Form</a></td><td>|</td>
+	<td><a href="accountForm">Account Form</a></td><td>|</td>
+	<td><a href="customerForm">Customer Form</a></td><td>|</td>
+	<td><a href="branchForm">Branch Form</a></td>
+	
+	<sec:authorize access="isAuthenticated()">
+	<td>|</td>
 		<td><a href="logout">Logout</a></td>
-		</sec:authorize>
-		</tr>
+	</sec:authorize>
+	<td></td>
+	<td></td>
+	</tr>
 	</table>
 </div>
+
 
 
 <body>

@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class LoginController {
-//	@RequestMapping({"/", "home"})
-//	public String homeABC() {
-//		return "home";
-//	}
+	@RequestMapping({"/","home"})
+	public String homeABC() {
+		return "home";
+	}
 }

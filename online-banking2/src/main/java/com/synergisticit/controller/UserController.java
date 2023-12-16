@@ -34,8 +34,10 @@ public class UserController {
 	public String userForm(User user, Model model, Principal principal) {
 		model.addAttribute("users", userService.findAll());
 		model.addAttribute("roles", roleService.findAll());
+		if(principal != null) {
+			model.addAttribute("loggedInUser", principal.getName());
+		}
 		
-		//model.addAttribute("loggedInUser", principal.getName());
 		return "userForm";
 	}
 	

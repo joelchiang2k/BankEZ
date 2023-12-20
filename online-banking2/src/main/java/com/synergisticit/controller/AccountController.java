@@ -20,7 +20,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.synergisticit.domain.Account;
 import com.synergisticit.domain.AccountType;
 import com.synergisticit.domain.Gender;
+import com.synergisticit.domain.TransactionType;
 import com.synergisticit.service.AccountService;
+import com.synergisticit.service.TransactionService;
 import com.synergisticit.validation.AccountValidator;
 
 import jakarta.validation.Valid;
@@ -28,7 +30,7 @@ import jakarta.validation.Valid;
 @Controller
 public class AccountController {
 	@Autowired AccountService accountService;
-	
+	@Autowired TransactionService transactionService;
 	@Autowired AccountValidator accountValidator;
 	
 	@InitBinder
@@ -82,6 +84,7 @@ public class AccountController {
 	
 	public void accountList(Model model) {
 		List<Account> accounts = accountService.findAll();
+		
 		model.addAttribute("accounts", accounts);
 		
 	}

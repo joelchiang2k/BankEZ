@@ -71,7 +71,7 @@ public class CustomerController {
 	public String updateCustomer(Customer customer, Model model) {
 		Customer c = customerService.findById(customer.getCustomerId());
 		model.addAttribute("customer", c);
-	
+		getData(model);
 		
 		customerList(model);
 		return "customerForm";

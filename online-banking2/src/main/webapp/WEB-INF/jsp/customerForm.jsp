@@ -25,7 +25,8 @@ color
 	<td><a href="roleForm">Role Form</a></td><td>|</td>
 	<td><a href="accountForm">Account Form</a></td><td>|</td>
 	<td><a href="customerForm">Customer Form</a></td><td>|</td>
-	<td><a href="branchForm">Branch Form</a></td>
+	<td><a href="branchForm">Branch Form</a></td></td><td>|</td>
+	<td><a href="bankTransactionForm">Bank Transaction Form</a></td>
 	
 	<sec:authorize access="isAuthenticated()">
 	<td>|</td>
@@ -57,7 +58,7 @@ color
 				</tr>
 				
 				<tr>
-				<td>Gender: </td>
+				<td>Gender:</td>
 				<td>
 				<c:forEach items="${genders}" var="g">
 					<c:choose>

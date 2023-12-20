@@ -25,7 +25,8 @@ color
 	<td><a href="roleForm">Role Form</a></td><td>|</td>
 	<td><a href="accountForm">Account Form</a></td><td>|</td>
 	<td><a href="customerForm">Customer Form</a></td><td>|</td>
-	<td><a href="branchForm">Branch Form</a></td>
+	<td><a href="branchForm">Branch Form</a></td></td><td>|</td>
+	<td><a href="bankTransactionForm">Bank Transaction Form</a></td>
 	
 	<sec:authorize access="isAuthenticated()">
 	<td>|</td>
@@ -84,14 +85,14 @@ color
 				
 				<tr>
 					<td>Account Branch:</td>
-					<td><f:input path="accountBranch" value="${account.accountBranch}"/></td>
-					<td><f:errors path="accountBranch" cssClass="error" /></td>
+					<td><f:input path="accountBranch.branchId" value="${account.accountBranch.getBranchId()}"/></td>
+					<td><f:errors path="accountBranch.branchId" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
 					<td>Account Customer:</td>
-					<td><f:input path="accountCustomer" value="${account.accountCustomer}"/></td>
-					<td><f:errors path="accountCustomer" cssClass="error" /></td>
+					<td><f:input path="accountCustomer.customerId" value="${account.accountCustomer.getCustomerId()}"/></td>
+					<td><f:errors path="accountCustomer.customerId" cssClass="error" /></td>
 				</tr>	 			
 			</table>
 			<tr>
@@ -122,7 +123,8 @@ color
 					<td>${account.getAccountDateOpened()}</td>
 					<td>${account.getAccountFolder()}</td>
 					<td>${account.getAccountBalance()}</td>
-					<td>${account.getAccountCustomer()}</td>
+					<td>${account.getAccountBranch().getBranchName()}</td>
+					<td>${account.getAccountCustomer().getCustomerName()}</td>
 				</tr>
 			</c:forEach>
 

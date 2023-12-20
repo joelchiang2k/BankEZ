@@ -19,7 +19,7 @@ import com.synergisticit.domain.BankTransaction;
 import com.synergisticit.domain.TransactionType;
 import com.synergisticit.service.AccountService;
 import com.synergisticit.service.BankTransactionService;
-import com.synergisticit.service.TransactionService;
+
 import com.synergisticit.validation.BankTransactionValidator;
 
 import jakarta.validation.Valid;
@@ -27,8 +27,6 @@ import jakarta.validation.Valid;
 @Controller
 public class BankTransactionController {
 	@Autowired BankTransactionService bankTransactionService;
-	
-	@Autowired TransactionService transactionService;
 	@Autowired AccountService accountService;
 	@Autowired BankTransactionValidator bankTransactionValidator;
 	

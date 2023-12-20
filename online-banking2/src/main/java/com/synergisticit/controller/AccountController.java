@@ -22,7 +22,6 @@ import com.synergisticit.domain.AccountType;
 import com.synergisticit.domain.Gender;
 import com.synergisticit.domain.TransactionType;
 import com.synergisticit.service.AccountService;
-import com.synergisticit.service.TransactionService;
 import com.synergisticit.validation.AccountValidator;
 
 import jakarta.validation.Valid;
@@ -30,7 +29,6 @@ import jakarta.validation.Valid;
 @Controller
 public class AccountController {
 	@Autowired AccountService accountService;
-	@Autowired TransactionService transactionService;
 	@Autowired AccountValidator accountValidator;
 	
 	@InitBinder

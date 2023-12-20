@@ -20,11 +20,14 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.synergisticit.service.UserService;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 	UserDetailsService u;
 	//@Autowired NoOpPasswordEncoder encoder;
+	@Autowired UserService userService;
 	@Autowired BCryptPasswordEncoder bCrypt;
 	
 	@Bean

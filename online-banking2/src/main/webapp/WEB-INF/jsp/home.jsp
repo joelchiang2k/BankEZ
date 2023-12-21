@@ -23,6 +23,7 @@
 	
 	<sec:authorize access="isAuthenticated()">
 	<td>|</td>
+		<br> loggedInUser: ${loggedInUser}
 		<td><a href="logout">Logout</a></td>
 	</sec:authorize>
 	<td></td>

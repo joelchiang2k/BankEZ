@@ -1,5 +1,6 @@
 package com.synergisticit.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,10 +37,13 @@ public class BankTransactionController {
 	}
 	
 	@RequestMapping("/bankTransactionForm")
-	public ModelAndView bankTransactionForm(BankTransaction bankTransaction, Model model) {
+	public ModelAndView bankTransactionForm(BankTransaction bankTransaction, Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("bankTransactionForm");
 		getData(model);
 		bankTransactionList(model);
+		if(principal != null) {
+			model.addAttribute("loggedInUser", principal.getName());
+		}
 		
 		return mav;
 	}

@@ -1,5 +1,6 @@
 package com.synergisticit.controller;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -35,9 +36,12 @@ public class BranchController {
 	}
 	
 	@RequestMapping("/branchForm")
-	public ModelAndView branchForm(Branch branch, Model model) {
+	public ModelAndView branchForm(Branch branch, Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("branchForm");
 		branchList(model);
+		if(principal != null) {
+			model.addAttribute("loggedInUser", principal.getName());
+		}
 		
 		return mav;
 	}

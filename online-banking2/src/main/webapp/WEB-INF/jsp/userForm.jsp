@@ -33,6 +33,8 @@
 	
 	<sec:authorize access="isAuthenticated()">
 	<td>|</td>
+		<br>Granted Authorities: <sec:authentication property="principal.authorities"/>
+		<br> loggedInUser: ${loggedInUser}
 		<td><a href="logout">Logout</a></td>
 	</sec:authorize>
 	<td></td>
@@ -45,18 +47,6 @@
 <div align="center">
 
 <h1>User Form</h1>
-<sec:authorize access="isAuthenticated()">
-		<br>Logged In User:<sec:authentication property="principal.username"/>
-		<br>Principal: <sec:authentication property="principal"/>
-		<br>Password: <sec:authentication property="principal.password"/>
-		<br>Enabled: <sec:authentication property="principal.enabled"/>
-		<br>AccountNonExpired: <sec:authentication property="principal.accountNonExpired"/>
-		<br>AccountNonLocked: <sec:authentication property="principal.accountNonLocked"/>
-		<br>credentialsNonExpired: <sec:authentication property="principal.credentialsNonExpired"/>
-		<br>Granted Authorities: <sec:authentication property="principal.authorities"/>
-		<br> loggedInUser: ${loggedInUser}
-		<br><a href="logout">Logout</a>
-</sec:authorize>
 
 
 <f:form action="saveUser" modelAttribute="user">

@@ -20,6 +20,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.synergisticit.domain.Role;
 import com.synergisticit.service.UserService;
 
 @Configuration
@@ -32,21 +33,34 @@ public class SecurityConfig {
 	
 	@Bean
 	InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+		List<com.synergisticit.domain.User> userList = userService.findAll();
 		List<UserDetails> users = new ArrayList<>();
 		List<GrantedAuthority> authority1 = new ArrayList<>();
-		authority1.add(new SimpleGrantedAuthority("Admin"));
-		authority1.add(new SimpleGrantedAuthority("User"));
+//		authority1.add(new SimpleGrantedAuthority("Admin"));
+//		authority1.add(new SimpleGrantedAuthority("User"));
+		System.out.println(userList);
+		for (com.synergisticit.domain.User user : userList) {
+			List<Role> roles = user.getRoles();
+			System.out.println(roles);
+			for(Role role : roles) {
+				System.out.println(role.getName());
+				authority1.add(new SimpleGrantedAuthority(role.getName()));
+			}
+			users.add(new User(user.getUsername(), bCrypt.encode(user.getPassword()), authority1));
+		}
 		UserDetails user1 = new User("joel", bCrypt.encode("joel"), authority1);
 		users.add(user1);
+	
 		
 		List<GrantedAuthority> authority2 = new ArrayList<>();
 		authority2.add(new SimpleGrantedAuthority("User"));
 		UserDetails user2 = new User("bob", bCrypt.encode("bob"), authority2);
 		users.add(user2);
+		System.out.println(authority1);
+		System.out.println(users);
 		return new InMemoryUserDetailsManager(users);
 		
-
-	}
+}
 	
 	
 	

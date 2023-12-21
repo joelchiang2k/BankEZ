@@ -1,5 +1,6 @@
 package com.synergisticit.controller;
 
+import java.security.Principal;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -37,10 +38,13 @@ public class AccountController {
 	}
 	
 	@RequestMapping("/accountForm")
-	public ModelAndView accountForm(Account account, Model model) {
+	public ModelAndView accountForm(Account account, Model model, Principal principal) {
 		ModelAndView mav = new ModelAndView("accountForm");
 		getData(model);
 		accountList(model);
+		if(principal != null) {
+			model.addAttribute("loggedInUser", principal.getName());
+		}
 		
 		
 		return mav;

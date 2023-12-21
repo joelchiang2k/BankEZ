@@ -31,6 +31,8 @@ color
 	
 	<sec:authorize access="isAuthenticated()">
 	<td>|</td>
+		<br>Granted Authorities: <sec:authentication property="principal.authorities"/>
+		<br> loggedInUser: ${loggedInUser}
 		<td><a href="logout">Logout</a></td>
 	</sec:authorize>
 	<td></td>
@@ -38,12 +40,6 @@ color
 	</tr>
 	</table>
 </div>
-<sec:authorize access="isAuthenticated()">
-		<br>Logged In User:<sec:authentication property="principal.username"/>
-		<br>Granted Authorities: <sec:authentication property="principal.authorities"/>
-		<br> loggedInUser: ${loggedInUser}
-		<br><a href="logout">Logout</a>
-</sec:authorize>
 <body>
 	<div align="center">
 		<h1>Branch Form</h1>

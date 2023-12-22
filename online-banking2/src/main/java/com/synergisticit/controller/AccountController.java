@@ -57,9 +57,11 @@ public class AccountController {
 		
 		
 		if(br.hasErrors()) {
+			getData(model);
 			accountList(model);
 			return mav;
 		}else {
+			getData(model);
 			accountService.save(account);
 			accountList(model);
 			mav.setViewName("redirect:accountForm");
@@ -71,7 +73,7 @@ public class AccountController {
 	public String updateAccount(Account account, Model model) {
 		Account b = accountService.findById(account.getAccountId());
 		model.addAttribute("account", b);
-	
+		getData(model);
 		
 		accountList(model);
 		return "accountForm";

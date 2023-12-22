@@ -25,6 +25,32 @@ public class AccountValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		Account account = (Account)target;
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountId", "accountId.empty", "accountId should not be empty");
+		
+		if(account.getAccountType() == null) {
+			errors.rejectValue("accountType", "accountType.value", "Select Account Type.");
+		}
+		
+		if(account.getAccountDateOpened() == null) {
+			errors.rejectValue("accountDateOpened", "accountDateOpened.value", "You did not select date opened.");
+		}
+		
+//		if(account.getAccountBalance() == null) {
+//			errors.rejectValue("accountBalance", "accountBalance.value", "Account Balance should not be empty.");
+//		}
+		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountFolder", "accountFolder.empty", "accountFolder should not be empty");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountBalance", "accountBalance.empty", "accountBalance should not be empty");
+//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountBranch", "accountBranch.empty", "accountBranch should not be empty");
+		
+		if(account.getAccountCustomer() == null) {
+			errors.rejectValue("accountCustomer", "accountCustomer.value", "Enter Customer Id.");
+		}
+
+		
+		
+		
 		
 		
 		

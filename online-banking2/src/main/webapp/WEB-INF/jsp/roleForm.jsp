@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -43,6 +44,7 @@ color
 <body>
 	<div align="center">
 		<h1>Role Form</h1>
+		<sec:authorize access="hasAuthority('Admin')">
 		<f:form action="saveRole" modelAttribute="role">
 			<table>
 				<tr>
@@ -64,6 +66,7 @@ color
 
 			</table>
 		</f:form>
+		</sec:authorize>
 	</div>
 
 	<div class="container-sm" align="center">

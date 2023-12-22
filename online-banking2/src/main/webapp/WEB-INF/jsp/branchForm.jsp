@@ -126,12 +126,7 @@ color
 				<tr>
 					<td>Branch Id</td>
 					<td>Branch Name</td>
-					<td>Address Line 1</td>
-					<td>Address Line 2</td>
-					<td>City</td>
-					<td>State</td>
-					<td>Country</td>
-					<td>ZipCode</td>
+					<td>Branch Address</td>
 				</tr>
 			</thead>
 			<c:forEach items="${branches}" var="branch">
@@ -139,12 +134,13 @@ color
 				<tr>
 					<td>${branch.getBranchId() }</td>
 					<td>${branch.getBranchName() }</td>
-					<td>${branch.getBranchAddress().getAddressLine1() }</td>
-					<td>${branch.getBranchAddress().getAddressLine2() }</td>
-					<td>${branch.getBranchAddress().getCity() }</td>
-					<td>${branch.getBranchAddress().getState() }</td>
-					<td>${branch.getBranchAddress().getCountry() }</td>
-					<td>${branch.getBranchAddress().getZipcode() }</td>
+					<td>${branch.getBranchAddress().getAddressLine1()},
+					    ${branch.getBranchAddress().getAddressLine2()},
+						${branch.getBranchAddress().getCity()},
+						${branch.getBranchAddress().getState()},
+						${branch.getBranchAddress().getCountry()},
+						${branch.getBranchAddress().getZipcode()}
+					</td>
 					<td><a href="updateBranch?branchId=${branch.getBranchId()}">Update</a></td>
 					<td><a href="deleteBranch?branchId=${branch.getBranchId()}">Delete</a></td>
 				</tr>

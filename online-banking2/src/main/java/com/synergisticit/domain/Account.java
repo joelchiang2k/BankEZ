@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.Setter;
 
 @NoArgsConstructor
@@ -41,6 +42,7 @@ public class Account {
 	
 	@ManyToOne
 	@JoinColumn(name="branchId")
+	
 	private Branch accountBranch;
 	
 	@ManyToOne

@@ -126,6 +126,8 @@ color
 					<td>${account.getAccountBalance()}</td>
 					<td>${account.getAccountBranch().getBranchName()}</td>
 					<td>${account.getAccountCustomer().getCustomerName()}</td>
+					<td><a href="updateAccount?accountId=${account.getAccountId()}">Update</a></td>
+					<td><a href="deleteAccount?accountId=${account.getAccountId()}">Delete</a></td>
 				</tr>
 			</c:forEach>
 

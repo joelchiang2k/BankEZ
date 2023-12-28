@@ -33,7 +33,7 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long customerId;
 	
-	@NotEmpty
+	
 	private String customerName;
 	
 //	@NotEmpty

@@ -52,9 +52,9 @@ public class AccountController {
 	
 	@RequestMapping("/saveAccount")
 	public ModelAndView saveAccount(@Valid @ModelAttribute Account account, BindingResult br, Model model) {
-		accountValidator.validate(account, br);
+		//accountValidator.validate(account, br);
 		ModelAndView mav = new  ModelAndView("accountForm");
-		
+
 		
 		if(br.hasErrors()) {
 			getData(model);

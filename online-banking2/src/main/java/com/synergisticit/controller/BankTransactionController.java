@@ -50,7 +50,7 @@ public class BankTransactionController {
 	
 	@RequestMapping("/saveBankTransaction")
 	public ModelAndView saveBankTransaction(@Valid @ModelAttribute BankTransaction bankTransaction, BindingResult br, Model model) {
-		bankTransactionValidator.validate(bankTransaction, br);
+		//bankTransactionValidator.validate(bankTransaction, br);
 		ModelAndView mav = new  ModelAndView("bankTransactionForm");
 		
 		var bankTransactionAmount = bankTransaction.getBankTransactionAmount();
@@ -70,8 +70,6 @@ public class BankTransactionController {
 			fromAccountBalance -= bankTransactionAmount;
 		}
 		else if(bankTransactionType == TransactionType.TRANSFER) {
-			System.out.println("hihihi");
-			System.out.println(bankTransactionAmount);
 			fromAccountBalance -= bankTransactionAmount;
 			toAccountBalance += bankTransactionAmount;
 		}
@@ -80,7 +78,7 @@ public class BankTransactionController {
 		toAccount.setAccountBalance(toAccountBalance);
 		
 		if(br.hasErrors()) {
-			System.out.println("errors" + br);
+			getData(model);
 			bankTransactionList(model);
 			return mav;
 		}else {

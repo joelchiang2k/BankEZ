@@ -71,11 +71,12 @@ color
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
-				
+				<td><f:errors path="gender" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
 					<td>DOB</td><td><f:input type="date"  path="customerDOB" name="customerDOB"  value="${customer.getCustomerDOB()}"/></td>
+					<td><f:errors path="customerDOB" cssClass="error" /></td>
 				</tr>
 				
 				
@@ -84,6 +85,7 @@ color
 					<td>
 						<f:input path="customerMobileNo" value="${customer.getCustomerMobileNo()}"/>
 					</td>
+					<td><f:errors path="customerMobileNo" cssClass="error" /></td>
 				</tr>
 				
 				<tr>

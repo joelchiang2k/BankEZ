@@ -18,7 +18,7 @@ public class UserValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		User user = (User)target;
-        //ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "user.userId.null", "User Id must be present");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "userId", "user.userId.null", "User Id must be present");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "user.username.empty", "User name is required.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "user.password.empty", "Password is required.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "user.email.empty", "Email is required.");

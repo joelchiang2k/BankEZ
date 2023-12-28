@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -84,10 +85,12 @@ color
 					</c:if>
 					</c:forEach>
 					</td>
+					<td><f:errors path="bankTransactionType" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
 					<td>Transaction Date:</td><td><f:input type="datetime-local"  path="bankTransactionDateTime" name="bankTransactionDateTime"  value="${bankTransaction.getBankTransactionDateTime()}"/></td>
+					<td><f:errors path="bankTransactionDateTime" cssClass="error" /></td>
 				</tr>
 				
 				<tr>

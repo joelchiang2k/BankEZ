@@ -11,14 +11,7 @@
 </head>
 <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
 
-<style>
-.error{
-   color:red;
-   font-style:italic;
-   font-weight:bold;
-}
 
-</style>
 <body>
 <div align="center">
 	<table>
@@ -51,32 +44,29 @@
 
 <f:form action="saveUser" modelAttribute="user">
 <table>
-<c:if test="${hasErrors}">
-	<tr>
-		<td>Errors:</td>
-		<td><f:errors path="*" cssClass="error"/></td>
-	</tr>
-</c:if>
-
 	<tr>
 		<td>User Id:</td>
 		<td><f:input path="userId" value="${user.userId}"/></td>
+		<td><f:errors path="userId" cssClass="error" /></td>
 	</tr>
 
 	<tr>
 		<td>User Name</td>
 		<td><f:input  path="username" value="${user.username}"/></td>
+		<td><f:errors path="username" cssClass="error" /></td>
 	</tr>
 
 	<tr>
 		<td>Password</td>
 		<td><f:password   path="password" value="${user.password}"/></td>
+		<td><f:errors path="password" cssClass="error" /></td>
 	</tr>
 
 
 	<tr>
 		<td>Email</td>
 		<td><f:input   path="email" value="${user.email}"/></td>
+		<td><f:errors path="email" cssClass="error" /></td>
 	</tr>
 
 	<tr>
@@ -92,6 +82,7 @@
 				</c:if>
 			</c:forEach>
 		</td>
+		<td><f:errors path="roles" cssClass="error" /></td>
 	</tr>
 
 <tr>

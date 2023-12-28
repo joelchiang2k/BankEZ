@@ -6,12 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.synergisticit.domain.Role;
 import com.synergisticit.service.RoleService;
+import com.synergisticit.validation.RoleValidator;
 
 import jakarta.validation.Valid;
 
@@ -19,6 +22,12 @@ import jakarta.validation.Valid;
 public class RoleController {
 	
 	@Autowired RoleService roleService;
+	@Autowired RoleValidator roleValidator;
+	
+	@InitBinder
+	public void initBinder(WebDataBinder binder) {
+		binder.addValidators(roleValidator);
+	}
 	
 	@RequestMapping("roleForm")
 	public ModelAndView roleForm(Role role, Principal principal, Model model) {

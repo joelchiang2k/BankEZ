@@ -66,16 +66,18 @@ color
 					</c:if>
 					</c:forEach>
 					</td>
+					<td><f:errors path="accountType" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
 					<td>Date Opened:</td><td><f:input type="date"  path="accountDateOpened" name="accountDateOpened"  value="${account.getAccountDateOpened()}"/></td>
+					<td><f:errors path="accountDateOpened" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
-					<td>Account Folder:</td>
-					<td><f:input path="accountFolder" value="${account.accountFolder}"/></td>
-					<td><f:errors path="accountFolder" cssClass="error" /></td>
+					<td>Account Holder:</td>
+					<td><f:input path="accountHolder" value="${account.accountHolder}"/></td>
+					<td><f:errors path="accountHolder" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
@@ -110,7 +112,7 @@ color
 					<td>Account Id</td>
 					<td>Account Type</td>
 					<td>Date Opened</td>
-					<td>Account Folder</td>
+					<td>Account Holder</td>
 					<td>Account Balance</td>
 					<td>Account Branch</td>
 					<td>Account Customer</td>
@@ -122,7 +124,7 @@ color
 					<td>${account.getAccountId() }</td>
 					<td>${account.getAccountType()}</td>
 					<td>${account.getAccountDateOpened()}</td>
-					<td>${account.getAccountFolder()}</td>
+					<td>${account.getAccountHolder()}</td>
 					<td>${account.getAccountBalance()}</td>
 					<td>${account.getAccountBranch().getBranchName()}</td>
 					<td>${account.getAccountCustomer().getCustomerName()}</td>

@@ -48,7 +48,7 @@ public class BranchController {
 	
 	@RequestMapping("/saveBranch")
 	public ModelAndView saveBranch(@Valid @ModelAttribute Branch branch, BindingResult br, Model model) {
-		branchValidator.validate(branch, br);
+		//branchValidator.validate(branch, br);
 		ModelAndView mav = new  ModelAndView("branchForm");
 		
 		

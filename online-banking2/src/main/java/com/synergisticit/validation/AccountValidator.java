@@ -25,7 +25,9 @@ public class AccountValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
+	
 		Account account = (Account)target;
+		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountId", "accountId.empty", "accountId should not be empty");
 		
 		if(account.getAccountType() == null) {
@@ -36,17 +38,13 @@ public class AccountValidator implements Validator {
 			errors.rejectValue("accountDateOpened", "accountDateOpened.value", "You did not select date opened.");
 		}
 		
-//		if(account.getAccountBalance() == null) {
-//			errors.rejectValue("accountBalance", "accountBalance.value", "Account Balance should not be empty.");
-//		}
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountFolder", "accountFolder.empty", "accountFolder should not be empty");
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountBalance", "accountBalance.empty", "accountBalance should not be empty");
-//		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountBranch", "accountBranch.empty", "accountBranch should not be empty");
-		
-		if(account.getAccountCustomer() == null) {
-			errors.rejectValue("accountCustomer", "accountCustomer.value", "Enter Customer Id.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "accountHolder", "accountHolder.empty", "accountHolder should not be empty");
+		if(account.getAccountCustomer().getCustomerId() == null) {
+			errors.rejectValue("accountCustomer.customerId", "accountCustomer.customerId.value", "Enter Customer Id.");
 		}
+		
+		
 
 		
 		

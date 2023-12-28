@@ -30,10 +30,8 @@ public class Role {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@NotNull
 	private Long roleId;
 	
-	@NotEmpty
 	private String name;
 	
 	@ManyToMany(mappedBy="roles")

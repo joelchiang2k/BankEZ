@@ -54,12 +54,12 @@ public class CustomerController {
 	
 	@RequestMapping("/saveCustomer")
 	public ModelAndView saveCustomer(@Valid @ModelAttribute Customer customer, BindingResult br, Model model) {
-		customerValidator.validate(customer, br);
+		//customerValidator.validate(customer, br);
 		ModelAndView mav = new ModelAndView("customerForm");
 		
 		
 		if(br.hasErrors()) {
-			System.out.println("have error"+br);
+			getData(model);
 			customerList(model);
 			return mav;
 		}else {

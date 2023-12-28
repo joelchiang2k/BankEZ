@@ -26,9 +26,10 @@ public class RoleValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
+		Role role = (Role)target;
 		
-		
-		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "roleId", "roleId.empty", "Role Id should not be empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "name.empty", "Name should not be empty");	
 		
 	}
 

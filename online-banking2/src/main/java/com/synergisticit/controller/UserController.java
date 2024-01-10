@@ -2,6 +2,9 @@ package com.synergisticit.controller;
 
 import java.security.Principal;
 
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,6 +44,7 @@ public class UserController {
 		return "userForm";
 	}
 	
+	//@PreAuthorize(value = "hasRole('Admin')")
 	@RequestMapping("/saveUser")
 	public String saveUser(@Valid @ModelAttribute User user, BindingResult br, Model model) {
 		System.out.println("1. br.hasErrors(): "+br.hasErrors());
@@ -62,6 +66,7 @@ public class UserController {
 	@RequestMapping("/update")
 	public String updateUser(User user, Model model) {
 		user = userService.findById(user.getUserId());
+		user.setPassword("");
 		model.addAttribute("user", user);
 		model.addAttribute("retrievedRole", user.getRoles());
 		model.addAttribute("users", userService.findAll());	

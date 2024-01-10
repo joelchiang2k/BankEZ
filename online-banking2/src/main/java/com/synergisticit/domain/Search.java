@@ -2,13 +2,10 @@ package com.synergisticit.domain;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -21,22 +18,15 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class BankTransaction {
+public class Search {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Long bankTransactionId;
-	
 	@NotNull
-	private Long bankTransactionFromAccount;
-	@NotNull
-	private Long bankTransactionToAccount;
-	
-	private double bankTransactionAmount;
+	private Long searchAccountId;
 	
 	@Enumerated(EnumType.STRING)
-	private TransactionType bankTransactionType;
+	private TransactionType searchTransactionType;
 	
-	private LocalDateTime bankTransactionDateTime;
+	private LocalDateTime searchFromDateTime;
+	private LocalDateTime searchToDateTime;
 	
-	private String comment;
 }

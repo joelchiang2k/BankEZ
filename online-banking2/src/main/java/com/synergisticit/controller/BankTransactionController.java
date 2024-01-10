@@ -53,6 +53,8 @@ public class BankTransactionController {
 		//bankTransactionValidator.validate(bankTransaction, br);
 		ModelAndView mav = new  ModelAndView("bankTransactionForm");
 		
+		
+		
 		var bankTransactionAmount = bankTransaction.getBankTransactionAmount();
 		var fromAccountId = bankTransaction.getBankTransactionFromAccount();
 		var toAccountId = bankTransaction.getBankTransactionToAccount();
@@ -60,18 +62,42 @@ public class BankTransactionController {
 		
 		Account fromAccount = accountService.findById(fromAccountId);
 		Account toAccount = accountService.findById(toAccountId);
+
+		if (fromAccount == null || toAccount == null) {
+			System.out.println("Account doesnt exist");
+			bankTransactionList(model);
+			mav.setViewName("redirect:bankTransactionForm");
+			return mav; 
+		}
+		
 		var fromAccountBalance = fromAccount.getAccountBalance();
 		var toAccountBalance = toAccount.getAccountBalance();
 		
 		if(bankTransactionType == TransactionType.DEPOSIT) {
-			fromAccountBalance += bankTransactionAmount;
+			toAccountBalance += bankTransactionAmount;
 		}
 		else if(bankTransactionType == TransactionType.WITHDRAW) {
-			fromAccountBalance -= bankTransactionAmount;
+			if(toAccountBalance < bankTransactionAmount) {
+				System.out.println("Can't withdraw due to insufficient funds");
+				bankTransactionList(model);
+				mav.setViewName("redirect:bankTransactionForm");
+				return mav; 
+			}
+			else {
+				toAccountBalance -= bankTransactionAmount;
+			}
 		}
 		else if(bankTransactionType == TransactionType.TRANSFER) {
-			fromAccountBalance -= bankTransactionAmount;
-			toAccountBalance += bankTransactionAmount;
+			if(fromAccountBalance < bankTransactionAmount) {
+				System.out.println("Can't transfer due to insufficient funds");
+				bankTransactionList(model);
+				mav.setViewName("redirect:bankTransactionForm");
+				return mav; 
+			}
+			else {
+				fromAccountBalance -= bankTransactionAmount;
+				toAccountBalance += bankTransactionAmount;
+			}
 		}
 		
 		fromAccount.setAccountBalance(fromAccountBalance);

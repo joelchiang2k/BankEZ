@@ -3,6 +3,8 @@ package com.synergisticit.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -37,6 +39,7 @@ public class Branch {
 	@Valid
 	private Address branchAddress;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="accountBranch")
 	private List<Account> branchAccounts = new ArrayList<>();
 }

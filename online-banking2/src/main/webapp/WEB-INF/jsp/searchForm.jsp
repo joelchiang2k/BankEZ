@@ -45,64 +45,41 @@ color
 
 <body>
 	<div align="center">
-		<h1>Bank Transaction Form</h1>
-		<f:form action="saveBankTransaction" modelAttribute="bankTransaction">
+		<h1>Search Form</h1>
+		<sec:authorize access="hasAuthority('Admin')">
+		<f:form action="saveSearch" modelAttribute="search">
 			<table>
-				<tr>
-					<td><f:errors path="*" cssClass="error" /></td>
-					<td></td>
-					<td></td>
-				</tr>
-			
-				<tr>
-					<td>Bank Transaction Id:</td>
-					<td><f:input path="bankTransactionId" value="${bankTransaction.bankTransactionId}"/></td>
-					<td><f:errors path="bankTransactionId" cssClass="error" /></td>
-				</tr> 
 				
 				<tr>
-					<td>Bank Transaction From Account:</td>
-					<td><f:input path="bankTransactionFromAccount" value="${bankTransaction.bankTransactionFromAccount}"/></td>
-					<td><f:errors path="bankTransactionFromAccount" cssClass="error" /></td>
+					<td>Search For Account By Id:</td>
+					<td><f:input path="searchAccountId" value="${search.searchAccountId}"/></td>
+					<td><f:errors path="searchAccountId" cssClass="error" /></td>
 				</tr>
+		
+				<tr>
+				    <td>Search Transaction Type: ${selectedSearchTransactionType}</td>
+				    <td>
+				        <select name="searchTransactionType" id="searchTransactionType">
+				            <c:forEach items="${searchTransactionTypes}" var="bt">
+				                <option value="${bt.name()}" 
+				                        <c:if test="${selectedSearchTransactionType == bt.name()}">selected</c:if>>
+				                    ${bt.name()}
+				                </option>
+				            </c:forEach>
+				        </select>
+				    </td>
+				    <td><f:errors path="searchTransactionType" cssClass="error" /></td>
+				</tr>
+
 				
 				<tr>
-					<td>Bank Transaction To Account:</td>
-					<td><f:input path="bankTransactionToAccount" value="${bankTransaction.bankTransactionToAccount}"/></td>
-					<td><f:errors path="bankTransactionToAccount" cssClass="error" /></td>
-				</tr>
-				
-				<tr>
-					<td>Bank Transaction Amount:</td>
-					<td><f:input path="bankTransactionAmount" value="${bankTransaction.bankTransactionAmount}"/></td>
-					<td><f:errors path="bankTransactionAmount" cssClass="error" /></td>
+					<td>Search From:</td><td><f:input type="datetime-local"  path="searchFromDateTime" name="searchFromDateTime"  value="${search.getSearchFromDateTime()}"/></td>
+					<td><f:errors path="searchFromDateTime" cssClass="error" /></td>
 				</tr>
 				
 				<tr>
-					<td>Bank Transaction Type:${selectedBankTransactionType}</td>
-					<td>
-					<c:forEach items="${bankTransactionTypes}" var="bt">
-					<c:if test="${selectedBankTransactionTypes==bt.name()}" >
-						<f:radiobutton  path="bankTransactionType" value="${bt.name()}" label="${bt.name()}" checked="checked"/>
-					</c:if>
-					
-					<c:if test="${selectedBankTransactionType!=bt.name()}" >
-						<f:radiobutton  path="bankTransactionType" value="${bt.name()}" label="${bt.name()}" />
-					</c:if>
-					</c:forEach>
-					</td>
-					<td><f:errors path="bankTransactionType" cssClass="error" /></td>
-				</tr>
-				
-				<tr>
-					<td>Transaction Date:</td><td><f:input type="datetime-local"  path="bankTransactionDateTime" name="bankTransactionDateTime"  value="${bankTransaction.getBankTransactionDateTime()}"/></td>
-					<td><f:errors path="bankTransactionDateTime" cssClass="error" /></td>
-				</tr>
-				
-				<tr>
-					<td>Comment:</td>
-					<td><f:input path="comment" value="${bankTransaction.comment}"/></td>
-					<td><f:errors path="comment" cssClass="error" /></td>
+					<td>Search To:</td><td><f:input type="datetime-local"  path="searchToDateTime" name="searchToDateTime"  value="${search.getSearchToDateTime()}"/></td>
+					<td><f:errors path="searchToDateTime" cssClass="error" /></td>
 				</tr>
 				
 				 			
@@ -111,6 +88,7 @@ color
 				<td colspan="2" align="center"><input type="submit"   value="Submit" /></td>
 			</tr>
 		</f:form>
+		</sec:authorize>
 	</div>
 	<p></p>
 	<p></p>
@@ -118,7 +96,7 @@ color
 		<table class="table table-bordered border-primary">
 			<thead>
 				<tr>
-					<td>Bank Transaction Id</td>
+					<td>Account Id</td>
 					<td>Bank Transaction From Account</td>
 					<td>Bank Transaction To Account</td>
 					<td>Bank Transaction Amount</td>

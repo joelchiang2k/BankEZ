@@ -19,7 +19,8 @@
 	<td><a href="accountForm">Account Form</a></td><td>|</td>
 	<td><a href="customerForm">Customer Form</a></td><td>|</td>
 	<td><a href="branchForm">Branch Form</a></td></td><td>|</td>
-	<td><a href="bankTransactionForm">Bank Transaction Form</a></td>
+	<td><a href="bankTransactionForm">Bank Transaction Form</a></td><td>|</td>
+	<td><a href="searchForm">Search Form</a></td>
 	
 	<sec:authorize access="isAuthenticated()">
 	<td>|</td>

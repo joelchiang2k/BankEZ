@@ -9,4 +9,5 @@ public interface AccountService {
     public Account findById(Long accountId);
     public List<Account> findAll();
     public void deleteById(Long accountId);
+    boolean existsById(Long accountId);
 }

@@ -38,5 +38,10 @@ public class AccountServiceImpl implements AccountService {
 		// TODO Auto-generated method stub
 		accountRepository.deleteById(accountId);
 	}
+	
+	@Override
+	public boolean existsById(Long accountId) {
+		return accountRepository.existsById(accountId);
+	}
 
 }

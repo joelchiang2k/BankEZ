@@ -117,11 +117,12 @@ ${role.getName()}
 
 </c:forEach>
 </td>
-
+<sec:authorize access="hasAuthority('Admin')">
 <td>
 <a href="${pageContext.request.contextPath}/update?userId=${user.getUserId() }">Update</a>
 <a href="${pageContext.request.contextPath}/delete?userId=${user.getUserId() }">Delete</a>
 </td>
+</sec:authorize>
 </tr>
 </c:forEach>
 

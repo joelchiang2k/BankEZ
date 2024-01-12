@@ -37,5 +37,9 @@ public class BankTransactionServiceImpl implements BankTransactionService {
 	public void deleteById(Long bankTransactionId) {
 		bankTransactionRepository.deleteById(bankTransactionId);
 	}
-
+	
+	@Override
+	public boolean existsById(Long bankTransactionId) {
+		return bankTransactionRepository.existsById(bankTransactionId);
+	}
 }

@@ -9,4 +9,5 @@ public interface RoleService {
       public Role findById(Long roleId);
       public List<Role> findAll();
       public void deleteById(Long roleId);
+      public boolean existsById(Long roleId);
 }

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -179,8 +180,10 @@ color
 					<td>${customer.getCustomerAddress().getState() }</td>
 					<td>${customer.getCustomerAddress().getCountry() }</td>
 					<td>${customer.getCustomerAddress().getZipcode() }</td>
+					<sec:authorize access="hasAuthority('Admin')">
 					<td><a href="updateCustomer?customerId=${customer.getCustomerId()}">Update</a></td>
 					<td><a href="deleteCustomer?customerId=${customer.getCustomerId()}">Delete</a></td>
+					</sec:authorize>
 				</tr>
 			</c:forEach>
 

@@ -14,4 +14,6 @@ public interface UserService {
 	
 	User findUserByUsername(String username);
 	
+	public boolean existsById(Long userId);
+	
 }

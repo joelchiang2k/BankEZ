@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -52,6 +54,7 @@ public class Customer {
 	
 	private String customerRealId;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "accountCustomer")
 	private List<Account> customerAccount = new ArrayList<>();
 	

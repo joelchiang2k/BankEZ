@@ -12,4 +12,5 @@ public interface BankTransactionService {
     public BankTransaction findById(Long bankTransactionId);
     public List<BankTransaction> findAll();
     public void deleteById(Long bankTransactionId);
+    public boolean existsById(Long bankTransactionId);
 }

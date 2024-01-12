@@ -12,4 +12,5 @@ public interface CustomerService {
     public Customer findById(Long customerId);
     public List<Customer> findAll();
     public void deleteById(Long customerId);
+    boolean existsById(Long customerId);
 }

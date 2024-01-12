@@ -142,8 +142,10 @@ color
 						${branch.getBranchAddress().getCountry()},
 						${branch.getBranchAddress().getZipcode()}
 					</td>
+					<sec:authorize access="hasAuthority('Admin')">
 					<td><a href="updateBranch?branchId=${branch.getBranchId()}">Update</a></td>
 					<td><a href="deleteBranch?branchId=${branch.getBranchId()}">Delete</a></td>
+					</sec:authorize>
 				</tr>
 			</c:forEach>
 

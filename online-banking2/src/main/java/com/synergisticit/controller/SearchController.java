@@ -6,8 +6,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -63,7 +67,7 @@ public class SearchController {
 	public ModelAndView saveSearch(@Valid @ModelAttribute Search search, BindingResult br, Model model) {
 		ModelAndView mav = new  ModelAndView("searchForm");
 		
-		List<BankTransaction> bankTransactionsList = new ArrayList<>();
+		Set<BankTransaction> bankTransactionsList = new HashSet<>();
 		
 		if(br.hasErrors()) {
 			getData(model);
@@ -71,30 +75,37 @@ public class SearchController {
 			model.addAttribute("bankTransactions", bankTransactions);
 			return mav;
 		}else {
-			try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
-	            // Rest of the code remains the same
-	            String query = "SELECT bankTransactionId FROM bankTransaction WHERE bankTransactionFromAccount = ? OR bankTransactionToAccount = ?";
-	            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-	            	Long searchAccountId = search.getSearchAccountId();
-	                // Set the parameter values
-	                preparedStatement.setLong(1, searchAccountId);
-	                preparedStatement.setLong(2, searchAccountId);
+			 try (Connection connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword)) {
+		            String query = "SELECT bankTransactionId FROM bankTransaction " +
+		                           "WHERE (bankTransactionFromAccount = ? OR bankTransactionToAccount = ?) " +
+		                           "AND bankTransactionDateTime BETWEEN ? AND ?" +
+		                           "AND bankTransactionType = ?";
+		            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+		                // Convert LocalDateTime to Timestamp
+		                Timestamp fromTimestamp = Timestamp.valueOf(search.getSearchFromDateTime());
+		                Timestamp toTimestamp = Timestamp.valueOf(search.getSearchToDateTime());
 
-	                // Execute the query
-	                try (ResultSet resultSet = preparedStatement.executeQuery()) {
-	                    // Iterate through the result set
-	                    while (resultSet.next()) {
-	                        // Access values of columns
-	                    	Long bankTransactionId = resultSet.getLong("bankTransactionId");
-	                    	bankTransactionsList.add(bankTransactionService.findById(bankTransactionId));
-	                        // Process the values as needed
-	                        System.out.println("bankId" + bankTransactionId);
-	                    }
-	                }
-	            }
-	        } catch (SQLException e) {
-	            e.printStackTrace();
-	        }
+		                // Set the parameter values
+		                preparedStatement.setLong(1, search.getSearchAccountId());
+		                preparedStatement.setLong(2, search.getSearchAccountId());
+		                preparedStatement.setTimestamp(3, fromTimestamp);
+		                preparedStatement.setTimestamp(4, toTimestamp);
+		                preparedStatement.setString(5, search.getSearchTransactionType().toString());
+		                // Execute the query
+		                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+		                    // Iterate through the result set
+		                    while (resultSet.next()) {
+		                        // Access the bankTransactionId
+		                        Long bankTransactionId = resultSet.getLong("bankTransactionId");
+		                        bankTransactionsList.add(bankTransactionService.findById(bankTransactionId));
+		                        // Process the bankTransactionId as needed
+		                        System.out.println("Bank Transaction ID: " + bankTransactionId);
+		                    }
+		                }
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		        }
 			getData(model);
 			
 			System.out.println(bankTransactionsList);

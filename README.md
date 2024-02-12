@@ -25,8 +25,5 @@ BankEZ is a modern banking application built with Spring Boot, MySQL, and a HTML
 2. **Manage Finances**: Perform various financial transactions such as transfers, deposits, and withdrawals.
 3. **Search Transactions**: Use the search functionality to find specific transactions based on different criteria.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
 ## Acknowledgements
 BankEZ makes use of several open-source libraries and frameworks. We acknowledge and thank the developers and contributors of these projects for their valuable contributions.

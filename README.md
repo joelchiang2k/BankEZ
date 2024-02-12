@@ -1,5 +1,3 @@
-# BankApp
-
 # BankEZ
 BankEZ is a modern banking application built with Spring Boot, MySQL, and a HTML frontend. It provides users with a convenient platform for managing their finances, including account creation, money transfers, deposits, withdrawals, and transaction searches.
 

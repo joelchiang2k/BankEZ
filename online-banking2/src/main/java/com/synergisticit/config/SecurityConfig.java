@@ -68,16 +68,16 @@ public class SecurityConfig {
 	
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-//		http.authorizeHttpRequests().anyRequest().permitAll();
-		http.csrf().disable()
-		.authorizeHttpRequests().requestMatchers(AntPathRequestMatcher.antMatcher("/")).permitAll()
-		.requestMatchers(AntPathRequestMatcher.antMatcher("/login")).permitAll()
-		.requestMatchers(AntPathRequestMatcher.antMatcher("/WEB-INF/jsp/**")).permitAll()
-		.anyRequest().authenticated()
-		.and()
-		.formLogin()// required to display the default form provided by Spring to login
-		.loginPage("/login")
-		.successHandler(successHandler);
+		http.authorizeHttpRequests().anyRequest().permitAll();
+//		http.csrf().disable()
+//		.authorizeHttpRequests().requestMatchers(AntPathRequestMatcher.antMatcher("/")).permitAll()
+//		.requestMatchers(AntPathRequestMatcher.antMatcher("/login")).permitAll()
+//		.requestMatchers(AntPathRequestMatcher.antMatcher("/WEB-INF/jsp/**")).permitAll()
+//		.anyRequest().authenticated()
+//		.and()
+//		.formLogin()// required to display the default form provided by Spring to login
+//		.loginPage("/login")
+//		.successHandler(successHandler);
 		
 		http.userDetailsService(u);
 		http.authenticationProvider(authProvider());
